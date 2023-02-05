@@ -1,0 +1,73 @@
+{
+	"name": "gravityAreaOrbit",
+	"plugin-id": "Sprite",
+	"sid": 479231747110221,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 256,
+						"height": 256,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2711180,
+						"collisionPoly": {
+							"points": [
+								0.14453125,
+								0.14453125,
+								0.287109375,
+								0.041015625,
+								0.5,
+								0,
+								0.693359375,
+								0.033203125,
+								0.85546875,
+								0.14453125,
+								0.962890625,
+								0.306640625,
+								1,
+								0.5,
+								0.962890625,
+								0.693359375,
+								0.85546875,
+								0.85546875,
+								0.697265625,
+								0.962890625,
+								0.5,
+								1,
+								0.3017578125,
+								0.962890625,
+								0.14453125,
+								0.85546875,
+								0.037109375,
+								0.705078125,
+								0,
+								0.5,
+								0.033203125,
+								0.310546875
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 300082208639631,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

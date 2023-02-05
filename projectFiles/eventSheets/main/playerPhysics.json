@@ -1,0 +1,1050 @@
+{
+	"name": "playerPhysics",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 544148762098355
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 232788697623410,
+					"parameters": {
+						"object-to-create": "jumpBox",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "jumpBox",
+					"sid": 452740817148192,
+					"parameters": {
+						"x": "player.X",
+						"y": "player.Y"
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "jumpBox",
+					"sid": 885258787086592,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "player",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 729666010304286,
+					"parameters": {
+						"object-to-create": "scroller",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 376808361138134,
+					"parameters": {
+						"instance-variable": "speed",
+						"value": "100"
+					}
+				}
+			],
+			"sid": 616734849719409
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 441472565753652
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "scroller",
+					"sid": 580955293893147,
+					"parameters": {
+						"object": "player",
+						"image-point-optional": "0"
+					}
+				}
+			],
+			"sid": 610918427143092
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 981508143758508,
+					"parameters": {
+						"object": "gravityAreaOrbit"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layout-angle",
+					"objectClass": "System",
+					"sid": 898780758118105,
+					"parameters": {
+						"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "jumpBox",
+					"sid": 512293917226691,
+					"parameters": {
+						"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+					}
+				}
+			],
+			"sid": 492728430856635,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "player",
+					"sid": 441744266536334,
+					"parameters": {
+						"object": "gravityAreaRect"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "jumpBox",
+					"sid": 361766543241652,
+					"parameters": {
+						"angle": "gravityAreaRect.gravityAngle+90"
+					}
+				}
+			],
+			"sid": 391617341010252,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "gravityAreaRect",
+							"sid": 852625025081557,
+							"parameters": {
+								"instance-variable": "setCamera"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-angle",
+							"objectClass": "System",
+							"sid": 639855518785016,
+							"parameters": {
+								"angle": "gravityAreaRect.Angle"
+							}
+						}
+					],
+					"sid": 317769005680080
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 469800743661770
+				}
+			],
+			"actions": [
+				{
+					"id": "set-angle",
+					"objectClass": "jumpBox",
+					"sid": 153474609242438,
+					"parameters": {
+						"angle": "0"
+					}
+				},
+				{
+					"id": "set-layout-angle",
+					"objectClass": "System",
+					"sid": 101306219648346,
+					"parameters": {
+						"angle": "0"
+					}
+				}
+			],
+			"sid": 734598984827156
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "playerControls",
+			"description": "controls for player",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "keyControl",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 396586920204623,
+									"parameters": {
+										"key": 37
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "moves player left"
+								}
+							],
+							"sid": 923156121690160,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 261098150477962,
+											"parameters": {
+												"object": "gravityAreaOrbit"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 569075629842344,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "player.speed",
+												"angle": "jumpBox.Angle+90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 431821034341319
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 185184863232071
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 263249652711728,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "player.speed",
+												"angle": "180",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 388107563320906
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-velocity",
+											"objectClass": "player",
+											"sid": 762576250124553,
+											"behaviorType": "Physics",
+											"parameters": {
+												"which": "x-velocity",
+												"comparison": 4,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "slows player down as they are turning around"
+										},
+										{
+											"id": "set-velocity",
+											"objectClass": "player",
+											"sid": 183863386433767,
+											"behaviorType": "Physics",
+											"parameters": {
+												"x-component": "player.Physics.VelocityX-10",
+												"y-component": "player.Physics.VelocityY"
+											}
+										}
+									],
+									"sid": 315332441155317
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 457785752302357,
+									"parameters": {
+										"key": 39
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "moves player right"
+								}
+							],
+							"sid": 550116202228725,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 142103668396748,
+											"parameters": {
+												"object": "gravityAreaOrbit"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 386275309929973,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "player.speed",
+												"angle": "jumpBox.Angle-90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 225454719570389
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 916046973103634
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 406463221161700,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "player.speed",
+												"angle": "0",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 903645161423357
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-velocity",
+											"objectClass": "player",
+											"sid": 496032561895877,
+											"behaviorType": "Physics",
+											"parameters": {
+												"which": "x-velocity",
+												"comparison": 2,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-velocity",
+											"objectClass": "player",
+											"sid": 362562902764350,
+											"behaviorType": "Physics",
+											"parameters": {
+												"x-component": "player.Physics.VelocityX+10",
+												"y-component": "player.Physics.VelocityY"
+											}
+										}
+									],
+									"sid": 571924437708382
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-key-pressed",
+									"objectClass": "Keyboard",
+									"sid": 173882184925451,
+									"parameters": {
+										"key": 90
+									}
+								}
+							],
+							"actions": [],
+							"sid": 866142470269567,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "jumpBox",
+											"sid": 316174055277496,
+											"parameters": {
+												"object": "solidTilesets"
+											}
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "jumpBox",
+											"sid": 818534163206589,
+											"parameters": {
+												"object": "solidObjects"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 327977460068133,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-overlapping-another-object",
+													"objectClass": "player",
+													"sid": 699838541998666,
+													"parameters": {
+														"object": "gravityAreaOrbit"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 621214422195807,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-velocity",
+															"objectClass": "player",
+															"sid": 648455227184655,
+															"behaviorType": "Physics",
+															"parameters": {
+																"which": "x-velocity",
+																"comparison": 5,
+																"value": "player.Physics.VelocityY"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-velocity",
+															"objectClass": "player",
+															"sid": 886963004329911,
+															"behaviorType": "Physics",
+															"parameters": {
+																"x-component": "player.Physics.VelocityX",
+																"y-component": "0"
+															}
+														},
+														{
+															"id": "apply-impulse-at-angle",
+															"objectClass": "player",
+															"sid": 993300005544266,
+															"behaviorType": "Physics",
+															"parameters": {
+																"impulse": "250",
+																"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)",
+																"image-point": "0"
+															}
+														}
+													],
+													"sid": 471934930405439
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-velocity",
+															"objectClass": "player",
+															"sid": 647504289175856,
+															"behaviorType": "Physics",
+															"parameters": {
+																"which": "x-velocity",
+																"comparison": 3,
+																"value": "player.Physics.VelocityY"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-velocity",
+															"objectClass": "player",
+															"sid": 170096180779391,
+															"behaviorType": "Physics",
+															"parameters": {
+																"x-component": "0",
+																"y-component": "player.Physics.VelocityY"
+															}
+														},
+														{
+															"id": "apply-impulse-at-angle",
+															"objectClass": "player",
+															"sid": 328942397462308,
+															"behaviorType": "Physics",
+															"parameters": {
+																"impulse": "250",
+																"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)",
+																"image-point": "0"
+															}
+														}
+													],
+													"sid": 465670807621458
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 448822892461721
+												}
+											],
+											"actions": [
+												{
+													"id": "set-velocity",
+													"objectClass": "player",
+													"sid": 394703851480263,
+													"behaviorType": "Physics",
+													"parameters": {
+														"x-component": "player.Physics.VelocityX",
+														"y-component": "0"
+													}
+												},
+												{
+													"id": "apply-impulse-at-angle",
+													"objectClass": "player",
+													"sid": 542223641985975,
+													"behaviorType": "Physics",
+													"parameters": {
+														"impulse": "250",
+														"angle": "-90",
+														"image-point": "0"
+													}
+												}
+											],
+											"sid": 435460261998291
+										}
+									],
+									"isOrBlock": true
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "abilitiesKeyboard",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "hide",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-pressed",
+													"objectClass": "Keyboard",
+													"sid": 417491325746700,
+													"parameters": {
+														"key": 40
+													}
+												}
+											],
+											"actions": [],
+											"sid": 828301891053240,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 169724123064671,
+															"parameters": {
+																"object": "solidTilesets"
+															}
+														},
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 846420443946363,
+															"parameters": {
+																"object": "solidObjects"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "player",
+															"sid": 497499138045942,
+															"parameters": {
+																"instance-variable": "prevAngle",
+																"value": "player.Angle"
+															}
+														},
+														{
+															"id": "set-animation",
+															"objectClass": "player",
+															"sid": 784350299260082,
+															"parameters": {
+																"animation": "\"hide\"",
+																"from": "beginning"
+															}
+														}
+													],
+													"sid": 880909417746378,
+													"isOrBlock": true
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "key-is-down",
+													"objectClass": "Keyboard",
+													"sid": 623258020856449,
+													"parameters": {
+														"key": 40
+													}
+												}
+											],
+											"actions": [],
+											"sid": 185725389454957,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 888022923213586,
+															"parameters": {
+																"object": "solidTilesets"
+															}
+														},
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 166135490065168,
+															"parameters": {
+																"object": "solidObjects"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-enabled",
+															"objectClass": "player",
+															"sid": 765331314554940,
+															"behaviorType": "Physics",
+															"parameters": {
+																"mode": "disabled"
+															}
+														},
+														{
+															"id": "set-angle",
+															"objectClass": "player",
+															"sid": 635437629401651,
+															"parameters": {
+																"angle": "0"
+															}
+														},
+														{
+															"id": "set-animation",
+															"objectClass": "player",
+															"sid": 677065949976838,
+															"parameters": {
+																"animation": "\"hide\"",
+																"from": "beginning"
+															}
+														},
+														{
+															"id": "set-boolean-instvar",
+															"objectClass": "player",
+															"sid": 757640343920245,
+															"parameters": {
+																"instance-variable": "crouching",
+																"value": "true"
+															}
+														}
+													],
+													"sid": 103720783070462,
+													"isOrBlock": true
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-released",
+													"objectClass": "Keyboard",
+													"sid": 959269321994717,
+													"parameters": {
+														"key": 40
+													}
+												}
+											],
+											"actions": [],
+											"sid": 759538742070339,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 379845738712364,
+															"parameters": {
+																"object": "solidTilesets"
+															}
+														},
+														{
+															"id": "is-overlapping-another-object",
+															"objectClass": "jumpBox",
+															"sid": 319887672341083,
+															"parameters": {
+																"object": "solidObjects"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-enabled",
+															"objectClass": "player",
+															"sid": 732736032582615,
+															"behaviorType": "Physics",
+															"parameters": {
+																"mode": "enabled"
+															}
+														},
+														{
+															"id": "set-angle",
+															"objectClass": "player",
+															"sid": 909269459917459,
+															"parameters": {
+																"angle": "player.prevAngle"
+															}
+														},
+														{
+															"id": "set-animation",
+															"objectClass": "player",
+															"sid": 843733476669953,
+															"parameters": {
+																"animation": "\"idle\"",
+																"from": "beginning"
+															}
+														},
+														{
+															"id": "set-boolean-instvar",
+															"objectClass": "player",
+															"sid": 223308518917370,
+															"parameters": {
+																"instance-variable": "crouching",
+																"value": "false"
+															}
+														}
+													],
+													"sid": 911788936964483,
+													"isOrBlock": true
+												}
+											]
+										}
+									],
+									"sid": 558343408404579
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "dash",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-pressed",
+													"objectClass": "Keyboard",
+													"sid": 892319821522038,
+													"parameters": {
+														"key": 88
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "player",
+													"sid": 976192273549211,
+													"parameters": {
+														"instance-variable": "prevSpeed",
+														"value": "player.speed"
+													}
+												}
+											],
+											"sid": 820574826561828,
+											"isOrBlock": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "key-is-down",
+													"objectClass": "Keyboard",
+													"sid": 445158939097160,
+													"parameters": {
+														"key": 88
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "player",
+													"sid": 568096613430620,
+													"parameters": {
+														"instance-variable": "speed",
+														"value": "150"
+													}
+												}
+											],
+											"sid": 461905340440614,
+											"isOrBlock": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-released",
+													"objectClass": "Keyboard",
+													"sid": 154128890100745,
+													"parameters": {
+														"key": 88
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "player",
+													"sid": 838917240816503,
+													"parameters": {
+														"instance-variable": "speed",
+														"value": "player.prevSpeed"
+													}
+												}
+											],
+											"sid": 692670045370825,
+											"isOrBlock": true
+										}
+									],
+									"sid": 828615226855090
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "player",
+											"sid": 412167996259399,
+											"parameters": {
+												"instance-variable": "canCrouch"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "enableGroup",
+											"objectClass": "GroupHandler",
+											"sid": 252594400173113,
+											"parameters": {
+												"groupName": "\"hide\""
+											}
+										}
+									],
+									"sid": 760846346753201
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "player",
+											"sid": 648522625356922,
+											"parameters": {
+												"instance-variable": "canDash"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "enableGroup",
+											"objectClass": "GroupHandler",
+											"sid": 985255864141489,
+											"parameters": {
+												"groupName": "\"dash\""
+											}
+										}
+									],
+									"sid": 322859039154563
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "player",
+											"sid": 623863851820474,
+											"parameters": {
+												"instance-variable": "canCrouch"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "disableGroup",
+											"objectClass": "GroupHandler",
+											"sid": 130670825282588,
+											"parameters": {
+												"groupName": "\"hide\""
+											}
+										}
+									],
+									"sid": 235061866690804
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "player",
+											"sid": 642365205653466,
+											"parameters": {
+												"instance-variable": "canDash"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "disableGroup",
+											"objectClass": "GroupHandler",
+											"sid": 205518525057769,
+											"parameters": {
+												"groupName": "\"dash\""
+											}
+										}
+									],
+									"sid": 613940404667559
+								}
+							],
+							"sid": 232973880980383
+						}
+					],
+					"sid": 967995522072910
+				}
+			],
+			"sid": 972051427821925
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 895514122455605,
+					"parameters": {
+						"object": "enemy"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 153713037240346
+		}
+	],
+	"sid": 894776600593388
+}

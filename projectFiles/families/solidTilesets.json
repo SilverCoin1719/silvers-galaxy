@@ -1,0 +1,17 @@
+{
+	"name": "solidTilesets",
+	"plugin-id": "Tilemap",
+	"sid": 283782506728380,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 902037293230267
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"templateTileMain"
+	]
+}

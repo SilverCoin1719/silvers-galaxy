@@ -1,0 +1,11 @@
+{
+	"name": "solidObjects",
+	"plugin-id": "Sprite",
+	"sid": 823199688216241,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"planet"
+	]
+}

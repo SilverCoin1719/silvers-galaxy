@@ -1,50 +1,50 @@
 {
-	"name": "player",
+	"name": "levelManager",
 	"plugin-id": "Sprite",
-	"sid": 944271156922627,
+	"sid": 865178119950328,
 	"isGlobal": false,
 	"instanceVariables": [
 		{
-			"name": "prevAngle",
+			"name": "levelID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 339729432318646
+		},
+		{
+			"name": "levelName",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 984141330874075
+		},
+		{
+			"name": "worldMapID",
 			"type": "number",
 			"desc": "",
-			"show": false,
-			"sid": 639288945661961
+			"show": true,
+			"sid": 429432003161378
 		},
 		{
-			"name": "crouching",
-			"type": "boolean",
+			"name": "effects",
+			"type": "string",
 			"desc": "",
-			"show": false,
-			"sid": 202477078675360
+			"show": true,
+			"sid": 514959856207649
 		},
 		{
-			"name": "prevSpeed",
+			"name": "gravityStrength",
 			"type": "number",
 			"desc": "",
-			"show": false,
-			"sid": 499574820921002
+			"show": true,
+			"sid": 880741465295370
 		},
 		{
-			"name": "speed",
+			"name": "gravityAngle",
 			"type": "number",
 			"desc": "",
-			"show": false,
-			"sid": 426227929009141
-		},
-		{
-			"name": "canCrouch",
-			"type": "boolean",
-			"desc": "",
-			"show": false,
-			"sid": 527667760371691
-		},
-		{
-			"name": "canDash",
-			"type": "boolean",
-			"desc": "",
-			"show": false,
-			"sid": 861929375445268
+			"show": true,
+			"sid": 600320576991386
 		}
 	],
 	"behaviorTypes": [],
@@ -54,19 +54,19 @@
 			{
 				"frames": [
 					{
-						"width": 128,
-						"height": 128,
+						"width": 64,
+						"height": 64,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4273244,
+						"imageSpriteId": 8867885,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 194204363542035,
+				"sid": 310111049536924,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

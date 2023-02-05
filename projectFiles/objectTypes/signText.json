@@ -1,21 +1,20 @@
 {
-	"name": "templateTileMain",
-	"plugin-id": "Tilemap",
-	"sid": 348424974893045,
+	"name": "signText",
+	"plugin-id": "Spritefont2",
+	"sid": 411533421894392,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"image": {
-		"width": 1536,
-		"height": 896,
+		"width": 128,
+		"height": 256,
 		"originX": 0.5,
 		"originY": 0.5,
 		"originalSource": "",
 		"exportFormat": "lossless",
 		"exportQuality": 0.8,
-		"imageSpriteId": 1819427,
+		"imageSpriteId": 6688150,
 		"useCollisionPoly": true
-	},
-	"tile-collision-polys": {}
+	}
 }

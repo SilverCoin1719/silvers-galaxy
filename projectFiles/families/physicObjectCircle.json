@@ -1,0 +1,18 @@
+{
+	"name": "physicObjectCircle",
+	"plugin-id": "Sprite",
+	"sid": 502058163345466,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 211004730042787
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"player",
+		"enemy"
+	]
+}

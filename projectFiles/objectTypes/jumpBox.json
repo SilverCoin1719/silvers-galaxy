@@ -1,0 +1,50 @@
+{
+	"name": "jumpBox",
+	"plugin-id": "Sprite",
+	"sid": 315395955033335,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 805902536957791
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 124,
+						"height": 70,
+						"originX": 0.5,
+						"originY": -0.05714285714285714,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2767839,
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "playerBottom",
+								"x": 0.5,
+								"y": 0.8571428571428571
+							}
+						],
+						"duration": 1
+					}
+				],
+				"sid": 463435085872417,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

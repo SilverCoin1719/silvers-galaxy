@@ -4,8 +4,29 @@
 	"name": "Silver's Galaxy",
 	"runtime": "c3",
 	"useWorker": "auto",
-	"bundleAddons": false,
+	"bundleAddons": true,
 	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Camera3D",
+			"name": "3D camera",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
 		{
 			"type": "plugin",
 			"id": "Sprite",
@@ -15,8 +36,44 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Tilemap",
 			"name": "Tilemap",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "wackytoasterGroupHandler",
+			"name": "GroupHandler",
+			"author": "Wackytoaster",
+			"bundled": true,
+			"version": "1.0.0.0"
+		},
+		{
+			"type": "behavior",
+			"id": "Physics",
+			"name": "Physics",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -25,27 +82,61 @@
 	"objectTypes": {
 		"items": [
 			"templateTileMain",
-			"player"
+			"player",
+			"jumpBox",
+			"scroller",
+			"planet",
+			"gravityAreaOrbit",
+			"levelManager",
+			"enemy",
+			"hurtBoxEnemy",
+			"signText",
+			"gravityAreaRect"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"3DCamera",
+					"Keyboard",
+					"Audio",
+					"GroupHandler"
+				],
+				"subfolders": [],
+				"name": "plugins"
+			}
+		]
 	},
 	"autosaveData": null,
 	"containers": [],
 	"families": {
-		"items": [],
+		"items": [
+			"physicObjectCircle",
+			"solidTilesets",
+			"solidObjects",
+			"enemies"
+		],
 		"subfolders": []
 	},
 	"layouts": {
 		"items": [
-			"debug"
+			"debug",
+			"objectRepo"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
-		"items": [
-			"Event sheet 1"
-		],
-		"subfolders": []
+		"items": [],
+		"subfolders": [
+			{
+				"items": [
+					"playerPhysics",
+					"enemyPhysics",
+					"main"
+				],
+				"subfolders": [],
+				"name": "main"
+			}
+		]
 	},
 	"rootFileFolders": {
 		"script": {
@@ -53,7 +144,16 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
+			"items": [
+				{
+					"name": "jump.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 980145899396449,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"music": {
@@ -153,7 +253,7 @@
 		"authorWebsite": "",
 		"appId": "",
 		"pixelRounding": false,
-		"zAxisScale": "normalized",
+		"zAxisScale": "regular",
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,
 		"fullscreenMode": "letterbox-scale",
@@ -191,12 +291,12 @@
 		"zNear": 1,
 		"zFar": 10000,
 		"maxSpriteSheetSize": 2048,
-		"loaderStyle": "splash",
+		"loaderStyle": "progress-logo",
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",
 		"autoReloadScriptsOnPreview": false,
-		"exportFileStructure": "folders"
+		"exportFileStructure": "flat"
 	},
 	"viewportWidth": 1920,
 	"viewportHeight": 1080,
