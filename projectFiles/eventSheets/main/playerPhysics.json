@@ -144,9 +144,9 @@
 				{
 					"id": "set-angle",
 					"objectClass": "jumpBox",
-					"sid": 361766543241652,
+					"sid": 787570905943493,
 					"parameters": {
-						"angle": "gravityAreaRect.gravityAngle+90"
+						"angle": "gravityAreaRect.gravityAngle-90"
 					}
 				}
 			],
@@ -251,6 +251,14 @@
 											"parameters": {
 												"object": "gravityAreaOrbit"
 											}
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 945084642005524,
+											"parameters": {
+												"object": "gravityAreaRect"
+											}
 										}
 									],
 									"actions": [
@@ -266,7 +274,8 @@
 											}
 										}
 									],
-									"sid": 431821034341319
+									"sid": 431821034341319,
+									"isOrBlock": true
 								},
 								{
 									"eventType": "block",
@@ -357,6 +366,14 @@
 											"parameters": {
 												"object": "gravityAreaOrbit"
 											}
+										},
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 679910305900941,
+											"parameters": {
+												"object": "gravityAreaRect"
+											}
 										}
 									],
 									"actions": [
@@ -372,7 +389,8 @@
 											}
 										}
 									],
-									"sid": 225454719570389
+									"sid": 225454719570389,
+									"isOrBlock": true
 								},
 								{
 									"eventType": "block",
@@ -562,7 +580,106 @@
 													],
 													"sid": 465670807621458
 												}
-											]
+											],
+											"isOrBlock": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-overlapping-another-object",
+													"objectClass": "player",
+													"sid": 147624627233118,
+													"parameters": {
+														"object": "gravityAreaRect"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 701839309052852,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-velocity",
+															"objectClass": "player",
+															"sid": 762034327039153,
+															"behaviorType": "Physics",
+															"parameters": {
+																"which": "x-velocity",
+																"comparison": 5,
+																"value": "player.Physics.VelocityY"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-velocity",
+															"objectClass": "player",
+															"sid": 615818546607595,
+															"behaviorType": "Physics",
+															"parameters": {
+																"x-component": "player.Physics.VelocityX",
+																"y-component": "0"
+															}
+														},
+														{
+															"id": "apply-impulse-at-angle",
+															"objectClass": "player",
+															"sid": 617716092660448,
+															"behaviorType": "Physics",
+															"parameters": {
+																"impulse": "250",
+																"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)",
+																"image-point": "0"
+															}
+														}
+													],
+													"sid": 401550714769328
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-velocity",
+															"objectClass": "player",
+															"sid": 279989885802323,
+															"behaviorType": "Physics",
+															"parameters": {
+																"which": "x-velocity",
+																"comparison": 3,
+																"value": "player.Physics.VelocityY"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-velocity",
+															"objectClass": "player",
+															"sid": 497502929066577,
+															"behaviorType": "Physics",
+															"parameters": {
+																"x-component": "0",
+																"y-component": "player.Physics.VelocityY"
+															}
+														},
+														{
+															"id": "apply-impulse-at-angle",
+															"objectClass": "player",
+															"sid": 350053380380421,
+															"behaviorType": "Physics",
+															"parameters": {
+																"impulse": "250",
+																"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)",
+																"image-point": "0"
+															}
+														}
+													],
+													"sid": 811058977721377
+												}
+											],
+											"isOrBlock": true
 										},
 										{
 											"eventType": "block",
