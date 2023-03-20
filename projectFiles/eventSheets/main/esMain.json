@@ -1,0 +1,441 @@
+{
+	"name": "esMain",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "esPlayerPhysics"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "esEnemyPhysics"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "esGUI"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 675749559575705
+				}
+			],
+			"actions": [
+				{
+					"id": "set-world-gravity",
+					"objectClass": "physicObjectCircle",
+					"sid": 967867255786673,
+					"behaviorType": "Physics",
+					"parameters": {
+						"gravity": "0"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 916745446898486,
+					"parameters": {
+						"object-to-create": "fadeOutCutoutDeath",
+						"layer": "\"deathLayer\"",
+						"x": "fadeOut.X",
+						"y": "fadeOut.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "fadeOutCutoutDeath",
+					"sid": 227431036814596,
+					"parameters": {
+						"width": "0",
+						"height": "0"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "fadeOut",
+					"sid": 331715889935938,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "fadeOutCutoutDeath",
+					"sid": 326621667488825,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"circleFadein\"",
+						"property": "offsetWidth",
+						"end-value": "ViewportWidth(\"deathLayer\")+100",
+						"time": ".25",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "fadeOutCutoutDeath",
+					"sid": 917466621870724,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"circleFadein\"",
+						"property": "offsetHeight",
+						"end-value": "ViewportWidth(\"deathLayer\")+100",
+						"time": ".25",
+						"ease": "default",
+						"destroy-on-complete": "yes",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 940485815723105
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "fadeOut",
+					"sid": 860051155862129,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 599845146611798
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 294802701644051
+				}
+			],
+			"actions": [
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "gravityAreaRectDisplay",
+					"sid": 907749539445219,
+					"parameters": {
+						"offset-y": "gravityAreaRectDisplay.ImageOffsetY-2"
+					}
+				},
+				{
+					"id": "set-image-offset-x",
+					"objectClass": "gravityAreaRectDisplay",
+					"sid": 830703519200998,
+					"parameters": {
+						"offset-x": "((Self.Width-Self.ImageWidth)/2)"
+					}
+				},
+				{
+					"id": "set-layer-angle",
+					"objectClass": "System",
+					"sid": 696344055145548,
+					"parameters": {
+						"layer": "\"GUI\"",
+						"angle": "LayoutAngle"
+					}
+				}
+			],
+			"sid": 549357806782872
+		},
+		{
+			"functionName": "playerDeath",
+			"functionDescription": "kills player",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": true,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "deathType",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 416006756899130
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 632880633508622,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 513867191028909,
+							"parameters": {
+								"variable": "deathType",
+								"comparison": 0,
+								"value": "\"fallOut\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "player",
+							"sid": 854000312084711
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 742494466044007,
+							"parameters": {
+								"object-to-create": "fadeOutCutoutDeath",
+								"layer": "\"deathLayer\"",
+								"x": "fadeOut.X",
+								"y": "fadeOut.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 584040391698691,
+							"parameters": {
+								"width": "ViewportWidth(\"deathLayer\")+100",
+								"height": "ViewportWidth(\"deathLayer\")+100"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "fadeOut",
+							"sid": 510462472723099,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-css-style",
+							"objectClass": "GUI",
+							"sid": 482635816736774,
+							"parameters": {
+								"property-name": "\"color\"",
+								"value": "\"black\""
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 251489139022012,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"circleFadeout\"",
+								"property": "offsetWidth",
+								"end-value": "0",
+								"time": "2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 570983500711829,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"circleFadeout\"",
+								"property": "offsetHeight",
+								"end-value": "0",
+								"time": "2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 987468182319736
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 208465054186821,
+							"parameters": {
+								"seconds": "1.0"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 368017962379764,
+							"parameters": {
+								"variable": "deaths",
+								"value": "1"
+							}
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 909657124967471
+						}
+					],
+					"sid": 251220921157586
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 880072975142610,
+							"parameters": {
+								"variable": "deathType",
+								"comparison": 0,
+								"value": "\"enemyKill\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 337815862537419
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 113771787284447,
+							"parameters": {
+								"variable": "deathType",
+								"comparison": 0,
+								"value": "\"timeOut\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "player",
+							"sid": 432503465482204
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 283840797906061,
+							"parameters": {
+								"object-to-create": "fadeOutCutoutDeath",
+								"layer": "\"deathLayer\"",
+								"x": "fadeOut.X",
+								"y": "fadeOut.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 773078240521713,
+							"parameters": {
+								"width": "ViewportWidth(\"deathLayer\")+100",
+								"height": "ViewportWidth(\"deathLayer\")+100"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "fadeOut",
+							"sid": 704286000015756,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-css-style",
+							"objectClass": "GUI",
+							"sid": 354594072409534,
+							"parameters": {
+								"property-name": "\"color\"",
+								"value": "\"black\""
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 485655945238843,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"circleFadeout\"",
+								"property": "offsetWidth",
+								"end-value": "0",
+								"time": "2.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "fadeOutCutoutDeath",
+							"sid": 635803661841496,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"circleFadeout\"",
+								"property": "offsetHeight",
+								"end-value": "0",
+								"time": "2.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 227652731812351
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 154355579485504,
+							"parameters": {
+								"seconds": "1.0"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 494438768054038,
+							"parameters": {
+								"variable": "deaths",
+								"value": "1"
+							}
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 146809444200207
+						}
+					],
+					"sid": 953570890566643
+				}
+			]
+		}
+	],
+	"sid": 949473005350634
+}

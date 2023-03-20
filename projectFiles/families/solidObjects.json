@@ -3,9 +3,17 @@
 	"plugin-id": "Sprite",
 	"sid": 823199688216241,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 246593385972899
+		}
+	],
 	"effectTypes": [],
 	"members": [
-		"planet"
+		"circularCollision",
+		"pinballPaddleLeft",
+		"pinballPaddleRight"
 	]
 }

@@ -1,0 +1,28 @@
+{
+	"name": "gravityAreaRectDisplay",
+	"plugin-id": "TiledBg",
+	"sid": 684156052337026,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "arrowAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 112183073291367
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 256,
+		"height": 320,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 4350461,
+		"useCollisionPoly": true
+	}
+}

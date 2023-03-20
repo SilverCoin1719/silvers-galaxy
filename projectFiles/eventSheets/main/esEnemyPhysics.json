@@ -1,0 +1,195 @@
+{
+	"name": "esEnemyPhysics",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "esPinball"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 517355970180651
+				}
+			],
+			"actions": [],
+			"sid": 168152114565968,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 510657492935853,
+							"parameters": {
+								"object": "enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 898502239088256,
+							"parameters": {
+								"object-to-create": "hurtBoxEnemy",
+								"layer": "0",
+								"x": "enemy.X",
+								"y": "enemy.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "hurtBoxEnemy",
+							"sid": 403174539930840,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "enemy",
+								"x": true,
+								"y": true,
+								"angle": false,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						}
+					],
+					"sid": 201401396097391
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "player",
+					"sid": 783677193588667,
+					"parameters": {
+						"object": "hurtBoxEnemy"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-destroy",
+					"objectClass": "hurtBoxEnemy",
+					"sid": 395617773662001,
+					"behaviorType": "Pin",
+					"parameters": {
+						"destroy": true
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "hurtBoxEnemy",
+					"sid": 886970496879220
+				}
+			],
+			"sid": 438090401461815
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "enemy",
+					"sid": 940934459436414,
+					"parameters": {
+						"object": "gravityArea"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 226325371129997,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "enemy",
+							"sid": 476391180080602,
+							"parameters": {
+								"object": "gravityAreaOrbit"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-force-towards-position",
+							"objectClass": "enemy",
+							"sid": 325150375330924,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "550",
+								"x": "gravityAreaOrbit.X",
+								"y": "gravityAreaOrbit.Y",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 443902519636217,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "enemy",
+							"sid": 985967748955058,
+							"parameters": {
+								"object": "gravityAreaRect"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "enemy",
+							"sid": 664206687489036,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "gravityAreaRect.gravityStrength",
+								"angle": "gravityAreaRect.gravityAngle",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 472629041152785
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 353458955575115
+				}
+			],
+			"actions": [
+				{
+					"id": "apply-force-at-angle",
+					"objectClass": "enemy",
+					"sid": 620784392564439,
+					"behaviorType": "Physics",
+					"parameters": {
+						"force": "550",
+						"angle": "90",
+						"image-point": "0"
+					}
+				}
+			],
+			"sid": 771531470024128
+		}
+	],
+	"sid": 501273587177641
+}

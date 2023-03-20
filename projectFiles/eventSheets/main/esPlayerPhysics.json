@@ -1,0 +1,1183 @@
+{
+	"name": "esPlayerPhysics",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "deaths",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 260681955167060
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 544148762098355
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 232788697623410,
+					"parameters": {
+						"object-to-create": "jumpBox",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "jumpBox",
+					"sid": 452740817148192,
+					"parameters": {
+						"x": "player.X",
+						"y": "player.Y"
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "jumpBox",
+					"sid": 885258787086592,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "player",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 401198350829557,
+					"parameters": {
+						"object-to-create": "scroller",
+						"layer": "0",
+						"x": "player.X",
+						"y": "player.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "player",
+					"sid": 376808361138134,
+					"parameters": {
+						"instance-variable": "speed",
+						"value": "100"
+					}
+				}
+			],
+			"sid": 616734849719409
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 441472565753652
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "scroller",
+					"sid": 926204284379320,
+					"parameters": {
+						"x": "lerp(Self.X, player.X, .4)",
+						"y": "lerp(Self.Y, player.Y, .4)"
+					}
+				}
+			],
+			"sid": 610918427143092
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "gravity",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "layoutRotate",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 700011037093661
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 278825794366573,
+							"parameters": {
+								"object": "gravityArea"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 825788520662577,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player",
+									"sid": 110060904189384,
+									"parameters": {
+										"object": "gravityAreaOrbit"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-towards-position",
+									"objectClass": "player",
+									"sid": 639013660318604,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "550",
+										"x": "gravityAreaOrbit.X",
+										"y": "gravityAreaOrbit.Y",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "jumpBox",
+									"sid": 208913522920293,
+									"parameters": {
+										"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+									}
+								}
+							],
+							"sid": 663273208419828,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 614519730698249,
+											"parameters": {
+												"name": "\"n\"",
+												"start-index": "0",
+												"end-index": "16"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 542449879585022,
+											"parameters": {
+												"variable": "layoutRotate",
+												"value": "loopindex"
+											}
+										}
+									],
+									"sid": 527972726685705,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 609308403397167,
+													"parameters": {
+														"first-value": "LayerAngle(\"player\")",
+														"comparison": 0,
+														"second-value": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-angle",
+													"objectClass": "System",
+													"sid": 791584498925235,
+													"parameters": {
+														"layer": "layoutRotate",
+														"angle": "anglerotate(LayerAngle(\"Player\"), angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90, 4)"
+													}
+												}
+											],
+											"sid": 394620133079396
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 654247777983837,
+													"parameters": {
+														"first-value": "LayerAngle(\"player\")",
+														"comparison": 0,
+														"second-value": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-angle",
+													"objectClass": "System",
+													"sid": 414653700310762,
+													"parameters": {
+														"layer": "layoutRotate",
+														"angle": "angle(gravityAreaOrbit.X, gravityAreaOrbit.Y, player.X, player.Y)+90"
+													}
+												}
+											],
+											"sid": 571100810060321
+										}
+									]
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player",
+									"sid": 706293284755967,
+									"parameters": {
+										"object": "gravityAreaRect"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-at-angle",
+									"objectClass": "player",
+									"sid": 730452695096239,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "gravityAreaRect.gravityStrength",
+										"angle": "gravityAreaRect.gravityAngle",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "jumpBox",
+									"sid": 899313726854358,
+									"parameters": {
+										"angle": "gravityAreaRect.gravityAngle-90"
+									}
+								}
+							],
+							"sid": 743365459697864,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "gravityAreaRect",
+											"sid": 736817148844156,
+											"parameters": {
+												"instance-variable": "setCamera"
+											}
+										},
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 849006780092660,
+											"parameters": {
+												"name": "\"n\"",
+												"start-index": "0",
+												"end-index": "16"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 238437775551868,
+											"parameters": {
+												"variable": "layoutRotate",
+												"value": "loopindex"
+											}
+										}
+									],
+									"sid": 940131320601269,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 495427848297844,
+													"parameters": {
+														"first-value": "LayerAngle(\"player\")",
+														"comparison": 0,
+														"second-value": "gravityAreaRect.gravityAngle-90"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-angle",
+													"objectClass": "System",
+													"sid": 990446899352267,
+													"parameters": {
+														"layer": "layoutRotate",
+														"angle": "anglerotate(LayerAngle(\"Player\"), gravityAreaRect.gravityAngle-90, 4)"
+													}
+												}
+											],
+											"sid": 786531352317816
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 382271935271230,
+													"parameters": {
+														"first-value": "LayerAngle(\"player\")",
+														"comparison": 0,
+														"second-value": "gravityAreaRect.gravityAngle-90"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-angle",
+													"objectClass": "System",
+													"sid": 346518376009440,
+													"parameters": {
+														"layer": "layoutRotate",
+														"angle": "gravityAreaRect.gravityAngle-90"
+													}
+												}
+											],
+											"sid": 563059305132751
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 938729902627345
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "jumpBox",
+							"sid": 350683683367625,
+							"parameters": {
+								"angle": "0"
+							}
+						},
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "player",
+							"sid": 407248764209535,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "550",
+								"angle": "90",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 971800730003522,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 865662301938552,
+									"parameters": {
+										"name": "\"n\"",
+										"start-index": "0",
+										"end-index": "16"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 502717764430673,
+									"parameters": {
+										"variable": "layoutRotate",
+										"value": "loopindex"
+									}
+								}
+							],
+							"sid": 572746506067988,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 169283912379784,
+											"parameters": {
+												"first-value": "LayerAngle(\"player\")",
+												"comparison": 0,
+												"second-value": "0"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-layer-angle",
+											"objectClass": "System",
+											"sid": 719806816941983,
+											"parameters": {
+												"layer": "layoutRotate",
+												"angle": "anglerotate(LayerAngle(\"player\"), 0, 4)"
+											}
+										}
+									],
+									"sid": 646938520584315
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 398858969432871,
+											"parameters": {
+												"first-value": "LayerAngle(\"player\")",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-layer-angle",
+											"objectClass": "System",
+											"sid": 486947945522613,
+											"parameters": {
+												"layer": "layoutRotate",
+												"angle": "0"
+											}
+										}
+									],
+									"sid": 307158625811568
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 297221583916904
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "playerControls",
+			"description": "controls for player",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "playerMoveLeft",
+					"functionDescription": "moves player left",
+					"functionCategory": "playerMovement",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "player",
+							"sid": 494667071450742,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "Self.speed",
+								"angle": "jumpBox.Angle",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 592228382228907,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player",
+									"sid": 177113797256813,
+									"parameters": {
+										"object": "gravityArea"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-at-angle",
+									"objectClass": "player",
+									"sid": 734595007037778,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "40",
+										"angle": "jumpBox.Angle+180",
+										"image-point": "0"
+									}
+								}
+							],
+							"sid": 600702030819105,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-velocity",
+											"objectClass": "player",
+											"sid": 944351897770963,
+											"behaviorType": "Physics",
+											"parameters": {
+												"which": "y-velocity",
+												"comparison": 2,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 543456658131615,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "40",
+												"angle": "jumpBox.Angle",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 201273130030446
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 105195061737938
+								},
+								{
+									"id": "compare-velocity",
+									"objectClass": "player",
+									"sid": 399513721409408,
+									"behaviorType": "Physics",
+									"parameters": {
+										"which": "x-velocity",
+										"comparison": 2,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-at-angle",
+									"objectClass": "player",
+									"sid": 558932506844622,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "40",
+										"angle": "jumpBox.Angle",
+										"image-point": "0"
+									}
+								}
+							],
+							"sid": 641024286991518
+						}
+					]
+				},
+				{
+					"functionName": "playerMoveJump",
+					"functionDescription": "makes player jump",
+					"functionCategory": "playerMovement",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 573914852600597,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "jumpBox",
+									"sid": 769792021196707,
+									"parameters": {
+										"object": "solidObjects"
+									}
+								},
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "jumpBox",
+									"sid": 703596441383883,
+									"parameters": {
+										"object": "solidTilesets"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-velocity",
+									"objectClass": "player",
+									"sid": 481301912063382,
+									"behaviorType": "Physics",
+									"parameters": {
+										"x-component": "player.Physics.VelocityX",
+										"y-component": "0"
+									}
+								},
+								{
+									"id": "apply-impulse-at-angle",
+									"objectClass": "player",
+									"sid": 511351840853362,
+									"behaviorType": "Physics",
+									"parameters": {
+										"impulse": "250",
+										"angle": "jumpBox.Angle-90",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "player",
+									"sid": 276949802549617,
+									"parameters": {
+										"instance-variable": "isJump",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 313835419062430,
+							"isOrBlock": true
+						}
+					]
+				},
+				{
+					"functionName": "playerGroundPound",
+					"functionDescription": "",
+					"functionCategory": "playerMovement",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-velocity",
+							"objectClass": "player",
+							"sid": 432564933785717,
+							"behaviorType": "Physics",
+							"parameters": {
+								"x-component": "0",
+								"y-component": "0"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "player",
+							"sid": 415095625109898,
+							"behaviorType": "Physics",
+							"parameters": {
+								"mode": "disabled"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 767648352690950,
+							"parameters": {
+								"seconds": ".2"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "player",
+							"sid": 747815576982618,
+							"behaviorType": "Physics",
+							"parameters": {
+								"mode": "enabled"
+							}
+						},
+						{
+							"id": "apply-impulse-at-angle",
+							"objectClass": "player",
+							"sid": 306447992731516,
+							"behaviorType": "Physics",
+							"parameters": {
+								"impulse": "500",
+								"angle": "jumpBox.Angle+90",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 263212766869957,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "player",
+									"sid": 913441265001092,
+									"parameters": {
+										"instance-variable": "inAir"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 317373544657172
+						}
+					]
+				},
+				{
+					"functionName": "playerMoveRight",
+					"functionDescription": "moves player right",
+					"functionCategory": "playerMovement",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "player",
+							"sid": 640010695410417,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "Self.speed",
+								"angle": "jumpBox.Angle+180",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 638442019553448,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-overlapping-another-object",
+									"objectClass": "player",
+									"sid": 766633871031487,
+									"parameters": {
+										"object": "gravityArea"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-at-angle",
+									"objectClass": "player",
+									"sid": 835827733693053,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "40",
+										"angle": "jumpBox.Angle+180",
+										"image-point": "0"
+									}
+								}
+							],
+							"sid": 510423720884469,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-velocity",
+											"objectClass": "player",
+											"sid": 467204016981719,
+											"behaviorType": "Physics",
+											"parameters": {
+												"which": "y-velocity",
+												"comparison": 4,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-force-at-angle",
+											"objectClass": "player",
+											"sid": 446384800224997,
+											"behaviorType": "Physics",
+											"parameters": {
+												"force": "40",
+												"angle": "jumpBox.Angle",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 909211933731429
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 722698322115530
+								},
+								{
+									"id": "compare-velocity",
+									"objectClass": "player",
+									"sid": 580257004217932,
+									"behaviorType": "Physics",
+									"parameters": {
+										"which": "x-velocity",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "apply-force-at-angle",
+									"objectClass": "player",
+									"sid": 728870487043407,
+									"behaviorType": "Physics",
+									"parameters": {
+										"force": "40",
+										"angle": "jumpBox.Angle",
+										"image-point": "0"
+									}
+								}
+							],
+							"sid": 624842645274487
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 870352634843617,
+							"parameters": {
+								"key": 37
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "playerMoveRight",
+							"sid": 869457447711198
+						}
+					],
+					"sid": 980052558100282
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 883683820403461,
+							"parameters": {
+								"key": 39
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "playerMoveLeft",
+							"sid": 921771847503263
+						}
+					],
+					"sid": 904307140320087
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 401775373249496,
+							"parameters": {
+								"key": 90
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "playerMoveJump",
+							"sid": 732945013935029
+						}
+					],
+					"sid": 249523129659169
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 381541674752891,
+							"parameters": {
+								"key": 40
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "playerGroundPound",
+							"sid": 925557964315300
+						}
+					],
+					"sid": 797700363870714
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "jumpBox",
+							"sid": 413073831641054,
+							"parameters": {
+								"object": "solidObjects"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "jumpBox",
+							"sid": 623981158474527,
+							"parameters": {
+								"object": "solidTilesets"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player",
+							"sid": 573942966605550,
+							"parameters": {
+								"instance-variable": "inAir",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 249675132132864,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "jumpBox",
+							"sid": 655502436153958,
+							"parameters": {
+								"object": "solidObjects"
+							}
+						},
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "jumpBox",
+							"sid": 442065055303885,
+							"parameters": {
+								"object": "solidTilesets"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player",
+							"sid": 639274672745904,
+							"parameters": {
+								"instance-variable": "isJump",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "player",
+							"sid": 652614908736941,
+							"parameters": {
+								"instance-variable": "inAir",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 832419662263252,
+					"isOrBlock": true
+				}
+			],
+			"sid": 972051427821925
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "player",
+					"sid": 379275725457389,
+					"parameters": {
+						"instance-variable": "isJump"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player",
+					"sid": 968677393720629,
+					"parameters": {
+						"animation": "\"jump\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 274868172895596
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-velocity",
+					"objectClass": "player",
+					"sid": 640896375545782,
+					"behaviorType": "Physics",
+					"parameters": {
+						"which": "overall-velocity",
+						"comparison": 2,
+						"value": "5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player",
+					"sid": 798337032289876,
+					"parameters": {
+						"animation": "\"idle\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 207550470057114
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-velocity",
+					"objectClass": "player",
+					"sid": 112071372882498,
+					"behaviorType": "Physics",
+					"parameters": {
+						"which": "overall-velocity",
+						"comparison": 4,
+						"value": "5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "player",
+					"sid": 861260741509834,
+					"parameters": {
+						"animation": "\"move\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 893028446253893
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-y",
+					"objectClass": "player",
+					"sid": 419293405856295,
+					"parameters": {
+						"comparison": 4,
+						"y-co-ordinate": "LayoutHeight+1000"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "playerDeath",
+					"sid": 421593275451830,
+					"parameters": [
+						"\"fallOut\""
+					]
+				}
+			],
+			"sid": 160918135264237
+		}
+	],
+	"sid": 894776600593388
+}

@@ -1,0 +1,13 @@
+{
+	"name": "gravityArea",
+	"plugin-id": "Sprite",
+	"sid": 864407122636791,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"gravityAreaOrbit",
+		"gravityAreaRect",
+		"circularCollision"
+	]
+}

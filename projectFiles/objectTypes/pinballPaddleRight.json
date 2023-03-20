@@ -1,0 +1,87 @@
+{
+	"name": "pinballPaddleRight",
+	"plugin-id": "Sprite",
+	"sid": 594860596843261,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "baseAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 518635759337598
+		},
+		{
+			"name": "willFlick",
+			"type": "boolean",
+			"desc": "",
+			"show": false,
+			"sid": 574372106675249
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 358709744458426
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "brightness",
+			"name": "Brightness"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 376,
+						"height": 200,
+						"originX": 0.8723404255319149,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4133018,
+						"collisionPoly": {
+							"points": [
+								0.15425531914893617,
+								0.29,
+								0.5,
+								0.155,
+								0.9707446808510638,
+								0.055,
+								0.9973404255319149,
+								0.5,
+								0.9707446808510638,
+								0.945,
+								0.5,
+								0.845,
+								0.15425531914893617,
+								0.71,
+								0.0425531914893617,
+								0.655,
+								0.0026595744680851063,
+								0.5,
+								0.04521276595744681,
+								0.35
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 255615998851423,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

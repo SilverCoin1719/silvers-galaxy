@@ -1,0 +1,514 @@
+{
+	"name": "esPinball",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "pinball",
+					"sid": 383474095055573,
+					"parameters": {
+						"object": "gravityArea"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 647860257010892,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "pinball",
+							"sid": 305876230775568,
+							"parameters": {
+								"object": "gravityAreaOrbit"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-force-towards-position",
+							"objectClass": "pinball",
+							"sid": 355033728075945,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "550",
+								"x": "gravityAreaOrbit.X",
+								"y": "gravityAreaOrbit.Y",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 417324027644441,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "pinball",
+							"sid": 587832752361111,
+							"parameters": {
+								"object": "gravityAreaRect"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-force-at-angle",
+							"objectClass": "pinball",
+							"sid": 185390631711366,
+							"behaviorType": "Physics",
+							"parameters": {
+								"force": "gravityAreaRect.gravityStrength",
+								"angle": "gravityAreaRect.gravityAngle",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 687553377570730
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 440892883304191
+				}
+			],
+			"actions": [
+				{
+					"id": "apply-force-at-angle",
+					"objectClass": "pinball",
+					"sid": 102815285873664,
+					"behaviorType": "Physics",
+					"parameters": {
+						"force": "550",
+						"angle": "90",
+						"image-point": "0"
+					}
+				}
+			],
+			"sid": 718369553020097
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "paddle",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-playing",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 975131289022033,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"flick\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 547137250999940,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "player",
+									"sid": 200295222381015,
+									"parameters": {
+										"object": "pinballPaddleLeft"
+									}
+								},
+								{
+									"id": "on-collision-with-another-object",
+									"objectClass": "pinball",
+									"sid": 194713670147952,
+									"parameters": {
+										"object": "pinballPaddleLeft"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-one-property",
+									"objectClass": "pinballPaddleLeft",
+									"sid": 830959286257056,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"flick\"",
+										"property": "offsetAngle",
+										"end-value": "-60",
+										"time": ".25",
+										"ease": "easeoutquad",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 279445121837998,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 702002741420137,
+											"parameters": {
+												"object": "pinballPaddleLeft"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-impulse-at-angle",
+											"objectClass": "player",
+											"sid": 346385767410942,
+											"behaviorType": "Physics",
+											"parameters": {
+												"impulse": "1000",
+												"angle": "pinballPaddleLeft.Angle-90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 558928951842942
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "pinball",
+											"sid": 130242906755085,
+											"parameters": {
+												"object": "pinballPaddleLeft"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-impulse-at-angle",
+											"objectClass": "pinball",
+											"sid": 351108902008741,
+											"behaviorType": "Physics",
+											"parameters": {
+												"impulse": "2000",
+												"angle": "pinballPaddleLeft.Angle-90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 877778406556790
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "pinballPaddleLeft",
+									"sid": 813091233957572,
+									"parameters": {
+										"instance-variable": "willFlick"
+									}
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 206512961183956
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-value",
+									"objectClass": "pinballPaddleLeft",
+									"sid": 691009693597190,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"flash\"",
+										"start-value": "100",
+										"end-value": "200",
+										"time": ".2",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "2"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 350126900211511
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "pinballPaddleLeft",
+									"sid": 556813461761851,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"flick\"",
+										"property": "offsetAngle",
+										"end-value": "-60",
+										"time": ".25",
+										"ease": "easeoutquad",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "pinballPaddleLeft",
+									"sid": 822262485097334,
+									"parameters": {
+										"instance-variable": "willFlick",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 247615665364302,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "player",
+											"sid": 741279113286578,
+											"parameters": {
+												"object": "pinballPaddleLeft"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-impulse-at-angle",
+											"objectClass": "player",
+											"sid": 216827735829845,
+											"behaviorType": "Physics",
+											"parameters": {
+												"impulse": "1000",
+												"angle": "pinballPaddleLeft.Angle-90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 306908239937346
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-overlapping-another-object",
+											"objectClass": "pinball",
+											"sid": 187733919535159,
+											"parameters": {
+												"object": "pinballPaddleLeft"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "apply-impulse-at-angle",
+											"objectClass": "pinball",
+											"sid": 454530381071083,
+											"behaviorType": "Physics",
+											"parameters": {
+												"impulse": "2000",
+												"angle": "pinballPaddleLeft.Angle-90",
+												"image-point": "0"
+											}
+										}
+									],
+									"sid": 647789397997292
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-playing",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 703345141881546,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"flick\""
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-between-angles",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 580316590079549,
+							"parameters": {
+								"first-angle": "Self.baseAngle",
+								"second-angle": "Self.baseAngle"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 601228190179106,
+							"parameters": {
+								"angle": "Self.baseAngle"
+							}
+						}
+					],
+					"sid": 945895566273248
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-playing",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 779296648934732,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"flash\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 654230168706783,
+							"parameters": {
+								"effect": "\"Brightness\"",
+								"parameter-index": "0",
+								"value": "Self.Tween.Value(\"flash\")"
+							}
+						}
+					],
+					"sid": 858972623986942
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "player",
+							"sid": 164001809963054,
+							"parameters": {
+								"object": "pinballPaddleLeft"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-impulse-at-angle",
+							"objectClass": "player",
+							"sid": 808224779476082,
+							"behaviorType": "Physics",
+							"parameters": {
+								"impulse": "1000",
+								"angle": "pinballPaddleLeft.Angle-90",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 872918500856023
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "pinball",
+							"sid": 345931860095284,
+							"parameters": {
+								"object": "pinballPaddleLeft"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "apply-impulse-at-angle",
+							"objectClass": "pinball",
+							"sid": 914076411732802,
+							"behaviorType": "Physics",
+							"parameters": {
+								"impulse": "2000",
+								"angle": "pinballPaddleLeft.Angle-90",
+								"image-point": "0"
+							}
+						}
+					],
+					"sid": 288919950142844
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 609222000889216,
+							"parameters": {
+								"object": "pinballPaddleLeft"
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 102598608001562,
+							"parameters": {
+								"interval-seconds": "random(3,6)"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 269896537898246,
+							"parameters": {
+								"instance-variable": "willFlick"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "pinballPaddleLeft",
+							"sid": 533405053533278,
+							"parameters": {
+								"instance-variable": "willFlick",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 125574916441053
+				}
+			],
+			"sid": 428143023447780
+		}
+	],
+	"sid": 621297903503142
+}

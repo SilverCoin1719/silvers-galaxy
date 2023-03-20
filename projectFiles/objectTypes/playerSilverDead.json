@@ -1,7 +1,7 @@
 {
-	"name": "enemy",
+	"name": "playerSilverDead",
 	"plugin-id": "Sprite",
-	"sid": 321450455163614,
+	"sid": 791833410420326,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,14 +11,14 @@
 			{
 				"frames": [
 					{
-						"width": 128,
-						"height": 128,
+						"width": 64,
+						"height": 64,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 1798583,
+						"imageSpriteId": 5257322,
 						"collisionPoly": {
 							"points": [
 								0.1484375,
@@ -43,8 +43,8 @@
 						"duration": 1
 					}
 				],
-				"sid": 901161775296220,
-				"name": "Animation 1",
+				"sid": 874873272524644,
+				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

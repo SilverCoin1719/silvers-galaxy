@@ -1,0 +1,10 @@
+{
+	"name": "GUI",
+	"plugin-id": "HTMLElement",
+	"sid": 807594310766110,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"members": [
+		"txtDeath"
+	]
+}

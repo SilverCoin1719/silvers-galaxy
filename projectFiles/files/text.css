@@ -1,0 +1,9 @@
+.GUI {
+	font-family: SupplyCenter-0W9nz;
+	font-size: calc(var(--construct-scale) * 20pt);
+	-webkit-text-stroke: calc(var(--construct-scale) * 3px) black;
+	
+}
+.deaths {
+	content: × var.deaths
+}

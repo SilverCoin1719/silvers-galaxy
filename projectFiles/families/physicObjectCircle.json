@@ -13,6 +13,7 @@
 	"effectTypes": [],
 	"members": [
 		"player",
-		"enemy"
+		"enemy",
+		"pinball"
 	]
 }

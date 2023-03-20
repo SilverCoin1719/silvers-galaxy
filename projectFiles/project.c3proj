@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 32702,
+	"savedWithRelease": 32703,
 	"name": "Silver's Galaxy",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -22,6 +22,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "HTMLElement",
+			"name": "HTML Element",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
@@ -36,8 +43,15 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Spritefont2",
-			"name": "Sprite font",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -58,6 +72,13 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Anchor",
+			"name": "Anchor",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Physics",
 			"name": "Physics",
 			"author": "Scirra",
@@ -72,8 +93,29 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "scrollto",
 			"name": "Scroll To",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "brightness",
+			"name": "Brightness",
 			"author": "Scirra",
 			"bundled": false
 		}
@@ -90,8 +132,16 @@
 			"levelManager",
 			"enemy",
 			"hurtBoxEnemy",
-			"signText",
-			"gravityAreaRect"
+			"gravityAreaRect",
+			"gravityAreaRectDisplay",
+			"circularCollision",
+			"pinball",
+			"pinballPaddleLeft",
+			"pinballPaddleRight",
+			"gameHandler",
+			"playerSilverDead",
+			"fadeOut",
+			"fadeOutCutoutDeath"
 		],
 		"subfolders": [
 			{
@@ -103,6 +153,14 @@
 				],
 				"subfolders": [],
 				"name": "plugins"
+			},
+			{
+				"items": [
+					"txtDeath",
+					"txtDeaths"
+				],
+				"subfolders": [],
+				"name": "GUI"
 			}
 		]
 	},
@@ -113,7 +171,9 @@
 			"physicObjectCircle",
 			"solidTilesets",
 			"solidObjects",
-			"enemies"
+			"enemies",
+			"gravityArea",
+			"GUI"
 		],
 		"subfolders": []
 	},
@@ -129,9 +189,11 @@
 		"subfolders": [
 			{
 				"items": [
-					"playerPhysics",
-					"enemyPhysics",
-					"main"
+					"esPlayerPhysics",
+					"esEnemyPhysics",
+					"esMain",
+					"esPinball",
+					"esGUI"
 				],
 				"subfolders": [],
 				"name": "main"
@@ -165,7 +227,16 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "SupplyCenter-0W9nz.ttf",
+					"type": "application/font-sfnt",
+					"sid": 448126453470459,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {
@@ -230,7 +301,16 @@
 			"subfolders": []
 		},
 		"general": {
-			"items": [],
+			"items": [
+				{
+					"name": "text.css",
+					"type": "text/css",
+					"sid": 673815555573404,
+					"file-info": {
+						"purpose": "stylesheet"
+					}
+				}
+			],
 			"subfolders": []
 		}
 	},
@@ -286,11 +366,11 @@
 		"compositingMode": "standard",
 		"sampling": "trilinear",
 		"downscaling": "medium",
-		"renderingMode": "auto",
+		"renderingMode": "2d",
 		"anisotropicFiltering": "auto",
 		"zNear": 1,
 		"zFar": 10000,
-		"maxSpriteSheetSize": 2048,
+		"maxSpriteSheetSize": 4096,
 		"loaderStyle": "progress-logo",
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",

@@ -1,0 +1,47 @@
+{
+	"name": "esGUI",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 791882698463343
+				}
+			],
+			"actions": [
+				{
+					"id": "set-font-color",
+					"objectClass": "txtDeaths",
+					"sid": 581954172432627,
+					"parameters": {
+						"color": "rgbEx255(255, 255, 255)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "txtDeaths",
+					"sid": 691817138092206,
+					"parameters": {
+						"text": "\"[outline=black]×[/outline]\" & \"[outline=black]\" & deaths & \"[/outline]\""
+					}
+				}
+			],
+			"sid": 672012862590338
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 949724301909552
+				}
+			],
+			"actions": [],
+			"sid": 653465456525689
+		}
+	],
+	"sid": 321467349712114
+}

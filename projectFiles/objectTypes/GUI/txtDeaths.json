@@ -1,0 +1,15 @@
+{
+	"name": "txtDeaths",
+	"plugin-id": "Text",
+	"sid": 475806354738976,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 137963457003215
+		}
+	],
+	"effectTypes": []
+}
