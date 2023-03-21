@@ -1,5 +1,28 @@
 {
 	"name": "esCamera",
-	"events": [],
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 846767559350311
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "scroller",
+					"sid": 910784595203982,
+					"parameters": {
+						"x": "lerp(Self.X, player.X, .4)",
+						"y": "lerp(Self.Y, player.Y, .4)"
+					}
+				}
+			],
+			"sid": 416568146760033
+		}
+	],
 	"sid": 671185924414835
 }

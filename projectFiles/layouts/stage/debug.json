@@ -1324,7 +1324,7 @@
 				{
 					"type": "heatHaze",
 					"properties": {
-						"initially-visible": true,
+						"initially-visible": false,
 						"origin": "top-left",
 						"wrap-horizontal": "repeat",
 						"wrap-vertical": "repeat",

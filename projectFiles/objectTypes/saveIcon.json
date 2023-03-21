@@ -1,21 +1,10 @@
 {
-	"name": "gameHandler",
+	"name": "saveIcon",
 	"plugin-id": "Sprite",
-	"sid": 237286699285917,
+	"sid": 143862506241472,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Tween",
-			"name": "Tween",
-			"sid": 459908001876025
-		},
-		{
-			"behaviorId": "Timer",
-			"name": "Timer",
-			"sid": 958804807115080
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -29,12 +18,12 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4328106,
+						"imageSpriteId": 766815,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 665832935832558,
+				"sid": 786240874866660,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

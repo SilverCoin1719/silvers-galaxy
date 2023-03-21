@@ -18,6 +18,14 @@
 			"includeSheet": "esEffect"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "esCamera"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "esPauseMenu"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

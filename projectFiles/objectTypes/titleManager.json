@@ -1,21 +1,18 @@
 {
-	"name": "gameHandler",
+	"name": "titleManager",
 	"plugin-id": "Sprite",
-	"sid": 237286699285917,
+	"sid": 243548201703523,
 	"isGlobal": false,
-	"instanceVariables": [],
-	"behaviorTypes": [
+	"instanceVariables": [
 		{
-			"behaviorId": "Tween",
-			"name": "Tween",
-			"sid": 459908001876025
-		},
-		{
-			"behaviorId": "Timer",
-			"name": "Timer",
-			"sid": 958804807115080
+			"name": "screenNumber",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 669009606160942
 		}
 	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -29,12 +26,12 @@
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4328106,
+						"imageSpriteId": 3875862,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 665832935832558,
+				"sid": 129053622026281,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

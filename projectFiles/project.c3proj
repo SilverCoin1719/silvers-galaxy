@@ -36,6 +36,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "NinePatch",
 			"name": "9-patch",
 			"author": "Scirra",
@@ -164,7 +171,10 @@
 			"fadeOut",
 			"fadeOutCutoutDeath",
 			"heatHaze",
-			"cameraArea"
+			"cameraArea",
+			"titleManager",
+			"Text",
+			"saveIcon"
 		],
 		"subfolders": [
 			{
@@ -172,7 +182,8 @@
 					"3DCamera",
 					"Keyboard",
 					"Audio",
-					"GroupHandler"
+					"GroupHandler",
+					"Mouse"
 				],
 				"subfolders": [],
 				"name": "plugins"
@@ -184,6 +195,17 @@
 				],
 				"subfolders": [],
 				"name": "GUI"
+			},
+			{
+				"items": [],
+				"subfolders": [
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "title"
+					}
+				],
+				"name": "menu"
 			}
 		]
 	},
@@ -202,10 +224,70 @@
 	},
 	"layouts": {
 		"items": [
-			"debug",
 			"objectRepo"
 		],
-		"subfolders": []
+		"subfolders": [
+			{
+				"items": [
+					"titleScreen"
+				],
+				"subfolders": [],
+				"name": "menu"
+			},
+			{
+				"items": [
+					"debug"
+				],
+				"subfolders": [
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "tutorialKingdom"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage01"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage2"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage3"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage4"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage5"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage6"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage7"
+					},
+					{
+						"items": [],
+						"subfolders": [],
+						"name": "bossStage08"
+					}
+				],
+				"name": "stage"
+			}
+		]
 	},
 	"eventSheets": {
 		"items": [],
@@ -218,14 +300,15 @@
 					"esPinball",
 					"esGUI",
 					"esEffect",
-					"esCamera"
+					"esCamera",
+					"esPauseMenu"
 				],
 				"subfolders": [],
 				"name": "main"
 			},
 			{
 				"items": [
-					"esMenu"
+					"esTitleScreen"
 				],
 				"subfolders": [],
 				"name": "menu"

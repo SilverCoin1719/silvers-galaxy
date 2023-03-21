@@ -1,0 +1,144 @@
+{
+	"name": "esTitleScreen",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 531272414432161
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "titleManager",
+					"sid": 267747497237699,
+					"parameters": {
+						"instance-variable": "screenNumber",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "scroller",
+					"sid": 792127253413822,
+					"parameters": {
+						"x": "980",
+						"y": "540"
+					}
+				}
+			],
+			"sid": 178969728674087
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 258383923961485,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				},
+				{
+					"id": "mouse-button-is-down",
+					"objectClass": "Mouse",
+					"sid": 432454614444159,
+					"parameters": {
+						"mouse-button": "right"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "gameHandler",
+					"sid": 331535305433684,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"moveScrollerX\"",
+						"start-value": "980",
+						"end-value": "2880",
+						"time": "1",
+						"ease": "easeinsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-value",
+					"objectClass": "gameHandler",
+					"sid": 347434697237174,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"moveScrollerY\"",
+						"start-value": "540",
+						"end-value": "1620",
+						"time": "1",
+						"ease": "easeinsine",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 643305733375758
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 440123460033540
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "scroller",
+					"sid": 401156427466854,
+					"parameters": {
+						"x": "gameHandler.Tween.Value(\"moveScrollerX\")",
+						"y": "gameHandler.Tween.Value(\"moveScrollerY\")"
+					}
+				}
+			],
+			"sid": 614343330549332
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 797264105997016,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "saveIcon"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 503385417143907,
+					"parameters": {
+						"layout": "debug"
+					}
+				}
+			],
+			"sid": 321457409576841
+		}
+	],
+	"sid": 557978367667944
+}

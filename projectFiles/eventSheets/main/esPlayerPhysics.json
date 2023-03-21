@@ -84,28 +84,6 @@
 			"sid": 616734849719409
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 441472565753652
-				}
-			],
-			"actions": [
-				{
-					"id": "set-position",
-					"objectClass": "scroller",
-					"sid": 926204284379320,
-					"parameters": {
-						"x": "lerp(Self.X, player.X, .4)",
-						"y": "lerp(Self.Y, player.Y, .4)"
-					}
-				}
-			],
-			"sid": 610918427143092
-		},
-		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "gravity",
