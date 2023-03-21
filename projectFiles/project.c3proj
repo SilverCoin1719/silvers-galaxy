@@ -36,6 +36,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "NinePatch",
+			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -118,6 +125,20 @@
 			"name": "Brightness",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "glass",
+			"name": "Glass",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "warplayout",
+			"name": "Warp layout",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "wpfjr2payfb",
@@ -141,7 +162,9 @@
 			"gameHandler",
 			"playerSilverDead",
 			"fadeOut",
-			"fadeOutCutoutDeath"
+			"fadeOutCutoutDeath",
+			"heatHaze",
+			"cameraArea"
 		],
 		"subfolders": [
 			{
@@ -193,10 +216,19 @@
 					"esEnemyPhysics",
 					"esMain",
 					"esPinball",
-					"esGUI"
+					"esGUI",
+					"esEffect",
+					"esCamera"
 				],
 				"subfolders": [],
 				"name": "main"
+			},
+			{
+				"items": [
+					"esMenu"
+				],
+				"subfolders": [],
+				"name": "menu"
 			}
 		]
 	},

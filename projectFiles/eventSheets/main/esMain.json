@@ -14,6 +14,10 @@
 			"includeSheet": "esGUI"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "esEffect"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

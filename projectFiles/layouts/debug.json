@@ -1087,6 +1087,39 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "cameraArea",
+					"properties": {
+						"left-margin": 320,
+						"right-margin": 320,
+						"top-margin": 320,
+						"bottom-margin": 320,
+						"edges": "stretch",
+						"fill": "transparent",
+						"initially-visible": true,
+						"origin": "top-left",
+						"seams": "overlap"
+					},
+					"uid": 34,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 15872,
+						"height": 2176,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 250968184246104,
@@ -1288,6 +1321,64 @@
 			"overriden": 0,
 			"subLayers": [],
 			"instances": [
+				{
+					"type": "heatHaze",
+					"properties": {
+						"initially-visible": true,
+						"origin": "top-left",
+						"wrap-horizontal": "repeat",
+						"wrap-vertical": "repeat",
+						"image-offset-x": 0,
+						"image-offset-y": 0,
+						"image-scale-x": 1,
+						"image-scale-y": 1,
+						"image-angle": 0,
+						"enable-tile-randomization": false,
+						"x-random": 1,
+						"y-random": 1,
+						"angle-random": 1,
+						"blend-margin-x": 0.1,
+						"blend-margin-y": 0.1
+					},
+					"uid": 19,
+					"instanceVariables": {},
+					"behaviors": {},
+					"effects": {
+						"Glass": {
+							"isEnabled": true,
+							"parameters": {
+								"density": 1
+							}
+						},
+						"WarpLayout": {
+							"isEnabled": true,
+							"parameters": {
+								"x-period": 120,
+								"y-period": 120,
+								"x-amplitude": 2,
+								"y-amplitude": 2,
+								"x-speed": 0.5,
+								"y-speed": 0.5
+							}
+						}
+					},
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 1920,
+						"height": 1080,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
 				{
 					"type": "playerSilverDead",
 					"properties": {

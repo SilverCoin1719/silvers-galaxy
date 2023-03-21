@@ -721,55 +721,7 @@
 					"functionParameters": [],
 					"eventType": "function-block",
 					"conditions": [],
-					"actions": [
-						{
-							"id": "set-velocity",
-							"objectClass": "player",
-							"sid": 432564933785717,
-							"behaviorType": "Physics",
-							"parameters": {
-								"x-component": "0",
-								"y-component": "0"
-							}
-						},
-						{
-							"id": "set-enabled",
-							"objectClass": "player",
-							"sid": 415095625109898,
-							"behaviorType": "Physics",
-							"parameters": {
-								"mode": "disabled"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 767648352690950,
-							"parameters": {
-								"seconds": ".2"
-							}
-						},
-						{
-							"id": "set-enabled",
-							"objectClass": "player",
-							"sid": 747815576982618,
-							"behaviorType": "Physics",
-							"parameters": {
-								"mode": "enabled"
-							}
-						},
-						{
-							"id": "apply-impulse-at-angle",
-							"objectClass": "player",
-							"sid": 306447992731516,
-							"behaviorType": "Physics",
-							"parameters": {
-								"impulse": "500",
-								"angle": "jumpBox.Angle+90",
-								"image-point": "0"
-							}
-						}
-					],
+					"actions": [],
 					"sid": 263212766869957,
 					"children": [
 						{
@@ -784,7 +736,55 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "set-velocity",
+									"objectClass": "player",
+									"sid": 748495592792950,
+									"behaviorType": "Physics",
+									"parameters": {
+										"x-component": "0",
+										"y-component": "0"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "player",
+									"sid": 759264827871332,
+									"behaviorType": "Physics",
+									"parameters": {
+										"mode": "disabled"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 823781604426264,
+									"parameters": {
+										"seconds": ".2"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "player",
+									"sid": 302990989173790,
+									"behaviorType": "Physics",
+									"parameters": {
+										"mode": "enabled"
+									}
+								},
+								{
+									"id": "apply-impulse-at-angle",
+									"objectClass": "player",
+									"sid": 883531072277547,
+									"behaviorType": "Physics",
+									"parameters": {
+										"impulse": "500",
+										"angle": "jumpBox.Angle+90",
+										"image-point": "0"
+									}
+								}
+							],
 							"sid": 317373544657172
 						}
 					]

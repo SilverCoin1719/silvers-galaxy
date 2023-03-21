@@ -1,0 +1,27 @@
+{
+	"name": "esEffect",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 121112123357106
+				}
+			],
+			"actions": [
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "heatHaze",
+					"sid": 898299201342529,
+					"parameters": {
+						"offset-y": "heatHaze.ImageOffsetY-1"
+					}
+				}
+			],
+			"sid": 617600855376398
+		}
+	],
+	"sid": 247156140550491
+}
