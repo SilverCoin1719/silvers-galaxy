@@ -467,7 +467,18 @@
 			"children": [
 				{
 					"eventType": "block",
-					"conditions": [],
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "saveIcon",
+							"sid": 999395657708112,
+							"parameters": {
+								"instance-variable": "icon",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
 					"actions": [
 						{
 							"id": "create-folder",
@@ -479,6 +490,18 @@
 						}
 					],
 					"sid": 794157989850728
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 360857365912554
+						}
+					],
+					"actions": [],
+					"sid": 819859143241159
 				}
 			]
 		},

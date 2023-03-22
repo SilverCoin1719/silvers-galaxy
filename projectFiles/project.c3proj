@@ -491,6 +491,14 @@
 					"file-info": {
 						"purpose": "stylesheet"
 					}
+				},
+				{
+					"name": "emptySave.json",
+					"type": "application/json",
+					"sid": 237972140613070,
+					"file-info": {
+						"purpose": "none"
+					}
 				}
 			],
 			"subfolders": []
