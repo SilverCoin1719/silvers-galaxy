@@ -1,0 +1,30 @@
+{
+	"name": "esAnimBackgrounds",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 866819146088023
+				}
+			],
+			"actions": [
+				{
+					"id": "set-effect-parameter",
+					"objectClass": "stars",
+					"sid": 928431775434232,
+					"parameters": {
+						"effect": "\"Exposure\"",
+						"parameter-index": "0",
+						"value": "clamp(Self.Sine.Value, 10, 200)"
+					}
+				}
+			],
+			"sid": 872081736884880,
+			"disabled": true
+		}
+	],
+	"sid": 900385970021207
+}

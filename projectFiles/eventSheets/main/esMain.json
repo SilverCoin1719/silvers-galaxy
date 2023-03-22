@@ -234,15 +234,6 @@
 							}
 						},
 						{
-							"id": "set-css-style",
-							"objectClass": "GUI",
-							"sid": 482635816736774,
-							"parameters": {
-								"property-name": "\"color\"",
-								"value": "\"black\""
-							}
-						},
-						{
 							"id": "tween-one-property",
 							"objectClass": "fadeOutCutoutDeath",
 							"sid": 251489139022012,
@@ -371,15 +362,6 @@
 							"sid": 704286000015756,
 							"parameters": {
 								"visibility": "visible"
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "GUI",
-							"sid": 354594072409534,
-							"parameters": {
-								"property-name": "\"color\"",
-								"value": "\"black\""
 							}
 						},
 						{

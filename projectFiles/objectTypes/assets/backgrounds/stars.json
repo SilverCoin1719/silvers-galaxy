@@ -1,0 +1,31 @@
+{
+	"name": "stars",
+	"plugin-id": "TiledBg",
+	"sid": 275566211214777,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 463682331532686
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "exposure",
+			"name": "Exposure"
+		}
+	],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 661466,
+		"useCollisionPoly": true
+	}
+}

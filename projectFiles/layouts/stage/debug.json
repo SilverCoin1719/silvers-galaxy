@@ -1087,39 +1087,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "cameraArea",
-					"properties": {
-						"left-margin": 320,
-						"right-margin": 320,
-						"top-margin": 320,
-						"bottom-margin": 320,
-						"edges": "stretch",
-						"fill": "transparent",
-						"initially-visible": true,
-						"origin": "top-left",
-						"seams": "overlap"
-					},
-					"uid": 34,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 0,
-						"y": 0,
-						"width": 15872,
-						"height": 2176,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 250968184246104,
@@ -1380,7 +1347,7 @@
 					}
 				},
 				{
-					"type": "playerSilverDead",
+					"type": "deathIcon",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Default",
@@ -1559,7 +1526,7 @@
 	"effectTypes": [],
 	"width": 38400,
 	"height": 2160,
-	"unboundedScrolling": true,
+	"unboundedScrolling": false,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",

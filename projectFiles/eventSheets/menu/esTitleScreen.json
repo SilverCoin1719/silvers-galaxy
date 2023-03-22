@@ -2,24 +2,53 @@
 	"name": "esTitleScreen",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "esAnimBackgrounds"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 531272414432161
+					"sid": 479282722505010
 				}
 			],
 			"actions": [
 				{
 					"id": "set-instvar-value",
 					"objectClass": "titleManager",
-					"sid": 267747497237699,
+					"sid": 602397410776241,
 					"parameters": {
 						"instance-variable": "screenNumber",
 						"value": "0"
 					}
+				}
+			],
+			"sid": 227819981102292
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "titleManager",
+					"sid": 964134213992201,
+					"parameters": {
+						"instance-variable": "screenNumber",
+						"comparison": 0,
+						"value": "0"
+					}
 				},
+				{
+					"id": "is-any-playing",
+					"objectClass": "gameHandler",
+					"sid": 366571253953557,
+					"behaviorType": "Tween",
+					"isInverted": true
+				}
+			],
+			"actions": [
 				{
 					"id": "set-position",
 					"objectClass": "scroller",
@@ -36,68 +65,337 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 258383923961485,
+					"id": "compare-instance-variable",
+					"objectClass": "titleManager",
+					"sid": 917232200474302,
 					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
+						"instance-variable": "screenNumber",
+						"comparison": 0,
+						"value": "1"
 					}
 				},
 				{
-					"id": "mouse-button-is-down",
-					"objectClass": "Mouse",
-					"sid": 432454614444159,
-					"parameters": {
-						"mouse-button": "right"
-					}
+					"id": "is-any-playing",
+					"objectClass": "gameHandler",
+					"sid": 116896517950822,
+					"behaviorType": "Tween",
+					"isInverted": true
 				}
 			],
 			"actions": [
 				{
-					"id": "tween-value",
-					"objectClass": "gameHandler",
-					"sid": 331535305433684,
-					"behaviorType": "Tween",
+					"id": "set-position",
+					"objectClass": "scroller",
+					"sid": 859306039867383,
 					"parameters": {
-						"tags": "\"moveScrollerX\"",
-						"start-value": "980",
-						"end-value": "2880",
-						"time": "1",
-						"ease": "easeinsine",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "tween-value",
-					"objectClass": "gameHandler",
-					"sid": 347434697237174,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"moveScrollerY\"",
-						"start-value": "540",
-						"end-value": "1620",
-						"time": "1",
-						"ease": "easeinsine",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
+						"x": "2880",
+						"y": "1620"
 					}
 				}
 			],
-			"sid": 643305733375758
+			"sid": 997425943990845
 		},
 		{
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 440123460033540
+					"id": "compare-instance-variable",
+					"objectClass": "titleManager",
+					"sid": 882399712654444,
+					"parameters": {
+						"instance-variable": "screenNumber",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 845009553371226,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 108120590374396,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 186359822427870,
+							"parameters": {
+								"mouse-button": "right"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "titleManager",
+							"sid": 560071061042897,
+							"parameters": {
+								"instance-variable": "screenNumber",
+								"value": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 808774097725577,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"brightness\"",
+								"start-value": "100",
+								"end-value": "200",
+								"time": ".25",
+								"ease": "easeoutelastic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 529403764924924
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 428223456193539,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerX\"",
+								"start-value": "980",
+								"end-value": "2880",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 352456029802360,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerY\"",
+								"start-value": "540",
+								"end-value": "1620",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 827143098329935
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-click",
+							"objectClass": "Mouse",
+							"sid": 624853660928095,
+							"parameters": {
+								"mouse-button": "right",
+								"click-type": "clicked"
+							}
+						},
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 466659283782953,
+							"parameters": {
+								"mouse-button": "left"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "titleManager",
+							"sid": 871469362530547,
+							"parameters": {
+								"instance-variable": "screenNumber",
+								"value": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 144299753255364,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"brightness\"",
+								"start-value": "100",
+								"end-value": "200",
+								"time": "1",
+								"ease": "easeoutelastic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 400508008317057
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 618956001933702,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerX\"",
+								"start-value": "980",
+								"end-value": "2880",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 787992262959556,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerY\"",
+								"start-value": "540",
+								"end-value": "1620",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 574261155832252
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 281349713752595,
+							"parameters": {
+								"key": 13
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "titleManager",
+							"sid": 603490272268050,
+							"parameters": {
+								"instance-variable": "screenNumber",
+								"value": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 650244899223095,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"brightness\"",
+								"start-value": "100",
+								"end-value": "200",
+								"time": "1.75",
+								"ease": "easeoutelastic",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 477699860152738
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 748223676459535,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerX\"",
+								"start-value": "980",
+								"end-value": "2880",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-value",
+							"objectClass": "gameHandler",
+							"sid": 700990277367284,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"moveScrollerY\"",
+								"start-value": "540",
+								"end-value": "1620",
+								"time": "2",
+								"ease": "testEase",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 972846163000583,
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "gameHandler",
+					"sid": 723910871977366,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"moveScrollerX\""
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "gameHandler",
+					"sid": 798560987891002,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"moveScrollerY\""
+					}
 				}
 			],
 			"actions": [
@@ -112,6 +410,33 @@
 				}
 			],
 			"sid": 614343330549332
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "gameHandler",
+					"sid": 106413224965551,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"brightness\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 964989283015786,
+					"parameters": {
+						"effect": "\"Brightness\"",
+						"parameter-index": "0",
+						"value": "gameHandler.Tween.Value(\"brightness\")"
+					}
+				}
+			],
+			"sid": 347219499398958
 		},
 		{
 			"eventType": "block",
@@ -132,12 +457,59 @@
 					"id": "go-to-layout",
 					"objectClass": "System",
 					"sid": 503385417143907,
+					"disabled": true,
 					"parameters": {
 						"layout": "debug"
 					}
 				}
 			],
-			"sid": 321457409576841
+			"sid": 321457409576841,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-folder",
+							"objectClass": "NWjs",
+							"sid": 262814024594501,
+							"parameters": {
+								"path": "\"./save\" & saveIcon.saveNumber"
+							}
+						}
+					],
+					"sid": 794157989850728
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 441738586702592
+				}
+			],
+			"actions": [
+				{
+					"id": "set-image-offset-x",
+					"objectClass": "stars",
+					"sid": 250128414611957,
+					"parameters": {
+						"offset-x": "Self.ImageOffsetX-1.5"
+					}
+				},
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "stars",
+					"sid": 116246308720299,
+					"parameters": {
+						"offset-y": "Self.ImageOffsetY+1"
+					}
+				}
+			],
+			"sid": 325320677251104
 		}
 	],
 	"sid": 557978367667944

@@ -15,15 +15,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Camera3D",
-			"name": "3D camera",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
-			"id": "HTMLElement",
-			"name": "HTML Element",
+			"id": "Json",
+			"name": "JSON",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -36,6 +29,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "LocalStorage",
+			"name": "Local storage",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Mouse",
 			"name": "Mouse",
 			"author": "Scirra",
@@ -43,8 +43,8 @@
 		},
 		{
 			"type": "plugin",
-			"id": "NinePatch",
-			"name": "9-patch",
+			"id": "NodeWebkit",
+			"name": "NW.js",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -77,14 +77,6 @@
 			"bundled": false
 		},
 		{
-			"type": "plugin",
-			"id": "wackytoasterGroupHandler",
-			"name": "GroupHandler",
-			"author": "Wackytoaster",
-			"bundled": true,
-			"version": "1.0.0.0"
-		},
-		{
 			"type": "behavior",
 			"id": "Anchor",
 			"name": "Anchor",
@@ -102,6 +94,13 @@
 			"type": "behavior",
 			"id": "Pin",
 			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -135,6 +134,13 @@
 		},
 		{
 			"type": "effect",
+			"id": "exposure",
+			"name": "Exposure",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
 			"id": "glass",
 			"name": "Glass",
 			"author": "Scirra",
@@ -150,62 +156,123 @@
 	],
 	"uniqueId": "wpfjr2payfb",
 	"objectTypes": {
-		"items": [
-			"templateTileMain",
-			"player",
-			"jumpBox",
-			"scroller",
-			"planet",
-			"gravityAreaOrbit",
-			"levelManager",
-			"enemy",
-			"hurtBoxEnemy",
-			"gravityAreaRect",
-			"gravityAreaRectDisplay",
-			"circularCollision",
-			"pinball",
-			"pinballPaddleLeft",
-			"pinballPaddleRight",
-			"gameHandler",
-			"playerSilverDead",
-			"fadeOut",
-			"fadeOutCutoutDeath",
-			"heatHaze",
-			"cameraArea",
-			"titleManager",
-			"Text",
-			"saveIcon"
-		],
+		"items": [],
 		"subfolders": [
 			{
 				"items": [
-					"3DCamera",
-					"Keyboard",
 					"Audio",
-					"GroupHandler",
-					"Mouse"
+					"NWjs",
+					"LocalStorage",
+					"JSON"
 				],
-				"subfolders": [],
+				"subfolders": [
+					{
+						"items": [
+							"Mouse",
+							"Keyboard"
+						],
+						"subfolders": [],
+						"name": "controls"
+					}
+				],
 				"name": "plugins"
-			},
-			{
-				"items": [
-					"txtDeath",
-					"txtDeaths"
-				],
-				"subfolders": [],
-				"name": "GUI"
 			},
 			{
 				"items": [],
 				"subfolders": [
 					{
 						"items": [],
+						"subfolders": [
+							{
+								"items": [
+									"fadeOut",
+									"fadeOutCutoutDeath"
+								],
+								"subfolders": [],
+								"name": "fadeOut"
+							},
+							{
+								"items": [
+									"heatHaze"
+								],
+								"subfolders": [],
+								"name": "heat"
+							}
+						],
+						"name": "effects"
+					},
+					{
+						"items": [
+							"circularCollision",
+							"enemy",
+							"pinball",
+							"pinballPaddleLeft",
+							"pinballPaddleRight",
+							"planet",
+							"player"
+						],
 						"subfolders": [],
-						"name": "title"
+						"name": "objects"
+					},
+					{
+						"items": [
+							"gravityAreaOrbit",
+							"gravityAreaRect",
+							"gravityAreaRectDisplay"
+						],
+						"subfolders": [],
+						"name": "areas"
+					},
+					{
+						"items": [],
+						"subfolders": [
+							{
+								"items": [
+									"Text",
+									"saveIcon"
+								],
+								"subfolders": [],
+								"name": "title"
+							}
+						],
+						"name": "menu"
+					},
+					{
+						"items": [
+							"txtDeaths",
+							"deathIcon"
+						],
+						"subfolders": [],
+						"name": "GUI"
+					},
+					{
+						"items": [
+							"stars"
+						],
+						"subfolders": [],
+						"name": "backgrounds"
+					},
+					{
+						"items": [
+							"templateTileMain"
+						],
+						"subfolders": [],
+						"name": "tiles"
 					}
 				],
-				"name": "menu"
+				"name": "assets"
+			},
+			{
+				"items": [
+					"hurtBoxEnemy",
+					"jumpBox",
+					"levelManager",
+					"scroller",
+					"titleManager",
+					"gameHandler"
+				],
+				"subfolders": [],
+				"name": "managers"
 			}
 		]
 	},
@@ -217,8 +284,7 @@
 			"solidTilesets",
 			"solidObjects",
 			"enemies",
-			"gravityArea",
-			"GUI"
+			"gravityArea"
 		],
 		"subfolders": []
 	},
@@ -301,7 +367,8 @@
 					"esGUI",
 					"esEffect",
 					"esCamera",
-					"esPauseMenu"
+					"esPauseMenu",
+					"esAnimBackgrounds"
 				],
 				"subfolders": [],
 				"name": "main"
@@ -435,7 +502,9 @@
 		],
 		"subfolders": [
 			{
-				"items": [],
+				"items": [
+					"testEase"
+				],
 				"subfolders": []
 			}
 		]
